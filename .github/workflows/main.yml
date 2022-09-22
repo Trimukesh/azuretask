@@ -2,8 +2,8 @@ name: tri
 on:
   workflow_dispatch:
     inputs:
-      username:
-        description: 'A username passed from the caller workflow'
+      rgname:
+        description: 'resource group name'
         required: true
         type: string
 
