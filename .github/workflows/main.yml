@@ -1,43 +1,17 @@
-on: [push]
-name: Azure ARM
+name: tri
+on:
+  workflow_call:
+    inputs:
+      username:
+        description: 'A username passed from the caller workflow'
+        default: 'john-doe'
+        required: false
+        type: string
+
 jobs:
-  build-and-deploy:
+  print-username:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Build Azure Virtual Machine Image
-      uses: Azure/build-vm-image@v0
-      with:
-        # This is the Azure region in which the Image Builder will run.
-        location: eastus
-        # This is the Resource Group where the temporary Imagebuilder Template resource will be created.
-        resource-group-name: tr 
-        # The name of the image builder template resource to be used for creating and running the Image builder service.
-        image-builder-template-name: --
-        # The value is an integer which is used as timeout in minutes for running the image build.
-        build-timeout-in-minutes: 240
-        # You can override the VM size, from the default value i.e. Standard_D1_v2.
-        vm-size: Standard_D1_v2
-        # The identity that will be used to do the role assignment and resource creation
-        managed-identity: --
-        # [ PlatformImage | SharedImageGallery | ManagedImage ]
-        source-image-type: PlatformImage
-        # OS types supported: [ linux | windows ].
-        source-os-type: linux
-        # Value of source-image supported by Azure Image Builder.
-        source-image: --
-        # This takes the path to a directory or a file in the runner. By default, it points to the default download directory of the github runner.
-        customizer-source: --
-        # The customer can enter multi inline powershell or shell commands and use variables to point to directories inside the downloaded location.
-        customizer-script: --
-        # The value is boolean and set to false by default. This value is for Windows images only, the image builder will run Windows Update at the end of the customizations and also handle the reboots it requires.
-        customizer-windows-update: --
-        # ManagedImage | SharedImageGallery | VHD
-        dist-type: ManagedImage
-        # Image Resource Id to be created by AIB
-        dist-resource-id: --
-        # location of Image created by AIB
-        dist-location: --
-        # Every Image builder run is identified with a unique run id.
-        run-output-name: --
-        # The values set will be used to set the user defined tags on the custom image artifact created.
-        dist-image-tags: --
+      - name: Print the input name to STDOUT
+        run: echo The username is ${{ inputs.username }}
