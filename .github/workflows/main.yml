@@ -16,5 +16,6 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
+            az account set
             az vm stop --resource-group trimu --name tri
             
