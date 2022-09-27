@@ -5,7 +5,6 @@ jobs:
  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-
     - name: Log in with Azure
       uses: azure/login@v1
       with:
