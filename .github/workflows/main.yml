@@ -9,5 +9,4 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          -name: az commands
           run: az vm stop -g trimu -n tri
