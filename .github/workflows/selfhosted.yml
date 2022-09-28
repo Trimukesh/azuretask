@@ -17,4 +17,4 @@ jobs:
       with:
         azcliversion: 2.30.0
         inlineScript: |
-           az vm stop -g trimu -n test
+           az vm start -g trimu -n test
