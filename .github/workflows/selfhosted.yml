@@ -1,6 +1,5 @@
 on: [push]
 name: AzureLogin
-
 jobs:
 
   build-and-deploy:
