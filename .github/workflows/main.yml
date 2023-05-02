@@ -1,4 +1,4 @@
-name: AzureLogin
+name: Azure  Login
 on: [push]
 
 
